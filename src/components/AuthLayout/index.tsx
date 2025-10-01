@@ -2,7 +2,26 @@ import { Landmark } from "lucide-react";
 import InputComponent from "../Input";
 import ButtonComponent from "../Button";
 
+import { useNavigate } from "react-router";
+import { login } from "../../utils/auth";
+
 export default function AuthLayout() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const agencia = formData.get("agencia")?.toString() || "";
+    const conta = formData.get("conta")?.toString() || "";
+    const password = formData.get("password")?.toString() || "";
+
+    if (login(agencia, conta, password)) {
+      navigate("/");
+    } else {
+      alert("Dados inválidos!");
+    }
+  };
+
   return (
     <div className="bg-gray-100 flex items-center justify-center min-h-screen p-4">
       <main className="w-full max-w-md bg-white rounded-lg shadow-md p-6 sm:p-8">
@@ -16,11 +35,12 @@ export default function AuthLayout() {
           <p className="mt-2">Acesse sua conta com segurança</p>
         </div>
 
-        <form className="space-y-5">
+        <form className="space-y-5" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-6">
             <InputComponent
               id="agencia"
               label="Agência"
+              name="agencia"
               type="text"
               placeholder="0001"
               containerClass="relative  "
@@ -31,6 +51,7 @@ export default function AuthLayout() {
             <InputComponent
               id="conta"
               label="Conta"
+              name="conta"
               type="text"
               placeholder="12345-6"
               containerClass="relative"
@@ -40,6 +61,7 @@ export default function AuthLayout() {
 
             <InputComponent
               id="password"
+              name="password"
               label="Senha"
               type="password"
               placeholder="********"

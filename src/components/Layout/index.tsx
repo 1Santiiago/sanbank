@@ -1,12 +1,13 @@
-import type React from "react";
+import { Navigate } from "react-router";
+import { isAuthenticated } from "../../utils/auth";
 import Header from "../Header";
 import Footer from "../Footer";
 
-interface ILayout {
-  children: React.ReactNode;
-}
+const LayoutApp = ({ children }: { children: React.ReactNode }) => {
+  if (!isAuthenticated()) {
+    return <Navigate to="/login" replace />;
+  }
 
-function LayoutApp({ children }: ILayout) {
   return (
     <>
       <Header />
@@ -14,6 +15,6 @@ function LayoutApp({ children }: ILayout) {
       <Footer />
     </>
   );
-}
+};
 
 export default LayoutApp;
