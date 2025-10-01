@@ -1,9 +1,45 @@
+import {
+  CreditCardIcon,
+  HouseIcon,
+  ReceiptIcon,
+  UserCircleIcon,
+} from "lucide-react";
+import ButtonComponent from "../Button";
+
 const Footer = () => {
+  const footerMenu = [
+    { name: "Início", icon: <HouseIcon className="text-2xl" />, active: true },
+    {
+      name: "Cartões",
+      icon: <CreditCardIcon className="text-2xl" />,
+      active: false,
+    },
+    {
+      name: "Extrato",
+      icon: <ReceiptIcon className="text-2xl" />,
+      active: false,
+    },
+    {
+      name: "Perfil",
+      icon: <UserCircleIcon className="text-2xl" />,
+      active: false,
+    },
+  ];
+
   return (
-    <footer>
-      <h3>
-        © {new Date().getFullYear()} SanBank — Todos os direitos reservados
-      </h3>
+    <footer className="fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 flex justify-around p-2 md:max-w-4xl md:mx-auto md:rounded-t-2xl">
+      <nav className="flex justify-around p-2">
+        {footerMenu.map((item, index) => (
+          <ButtonComponent
+            title={item.name}
+            icons={item.icon}
+            key={index}
+            btnClass={`flex flex-col items-center w-20 p-1 rounded-lg transition-colors ${
+              item.active ? "text-blue-600" : "text-gray-500 hover:bg-gray-100"
+            }`}
+          ></ButtonComponent>
+        ))}
+      </nav>
     </footer>
   );
 };
