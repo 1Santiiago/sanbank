@@ -1,5 +1,5 @@
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  title: any;
+  title?: any;
   btnClass?: string;
   classDivBtn?: string;
   icons?: any;

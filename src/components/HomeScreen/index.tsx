@@ -1,5 +1,13 @@
+import { Balance } from "../Balance";
+import { FastChange } from "../FastingChange";
+
 function HomeScreen() {
-  return <p>Olá, Santiago</p>;
+  return (
+    <main className="p-4 md:p-6 max-w-4xl mx-auto space-y-8 flex-grow mb-20">
+      <Balance />
+      <FastChange />
+    </main>
+  );
 }
 
 export default HomeScreen;
