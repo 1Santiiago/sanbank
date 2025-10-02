@@ -5,20 +5,22 @@ import {
   UserCircleIcon,
 } from "lucide-react";
 import ButtonComponent from "../Button";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 
 const Footer = () => {
+  const location = useLocation();
+  const pathLocation = location.pathname;
   const footerMenu = [
     {
       name: "Início",
       icon: <HouseIcon className="text-2xl" />,
-      active: true,
+      active: pathLocation === "/" ? true : false,
       path: "/",
     },
     {
       name: "Cartões",
       icon: <CreditCardIcon className="text-2xl" />,
-      active: false,
+      active: pathLocation === "/card" ? true : false,
       path: "/card",
     },
     {
