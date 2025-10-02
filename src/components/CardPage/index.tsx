@@ -45,7 +45,7 @@ export const PageCard = () => {
         </button>
       </section>
 
-      <section className="grid grid-cols-4 gap-4">
+      <section className="grid grid-cols-2 lg:grid-cols-4  gap-4 overflow-x-auto w-full">
         {cardActions.map((item) => (
           <button
             key={item.name}
