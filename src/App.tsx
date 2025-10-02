@@ -1,10 +1,9 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-
 import AuthLayout from "./components/AuthLayout";
-
 import HomeScreen from "./components/HomeScreen";
 import LayoutApp from "./components/Layout";
 import { PrivateRoute } from "./components/privateRout";
+import { PageCard } from "./components/CardPage";
 
 function App() {
   return (
@@ -19,6 +18,14 @@ function App() {
                 <HomeScreen />
               </LayoutApp>
             </PrivateRoute>
+          }
+        />
+        <Route
+          path="/card"
+          element={
+            <LayoutApp>
+              <PageCard />
+            </LayoutApp>
           }
         />
       </Routes>

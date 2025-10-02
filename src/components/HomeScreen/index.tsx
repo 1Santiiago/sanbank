@@ -1,3 +1,4 @@
+import { Activites } from "../Activites";
 import { Balance } from "../Balance";
 import { FastChange } from "../FastingChange";
 import { MyCard } from "../Mycard";
@@ -10,6 +11,7 @@ function HomeScreen() {
       <FastChange />
       <MyCard />
       <Suggestion />
+      <Activites />
     </main>
   );
 }
