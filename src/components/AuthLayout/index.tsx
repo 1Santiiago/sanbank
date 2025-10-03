@@ -15,6 +15,16 @@ export default function AuthLayout() {
     const conta = formData.get("conta")?.toString() || "";
     const password = formData.get("password")?.toString() || "";
 
+    const onlyNumbers = /^[0-9]+$/;
+
+    if (
+      !onlyNumbers.test(agencia) ||
+      !onlyNumbers.test(conta.replace("-", ""))
+    ) {
+      alert("Agência e conta devem conter apenas números!");
+      return;
+    }
+
     if (login(agencia, conta, password)) {
       navigate("/");
     } else {
@@ -42,6 +52,8 @@ export default function AuthLayout() {
               label="Agência"
               name="agencia"
               type="text"
+              pattern="[0-9-]*"
+              inputMode="numeric"
               placeholder="0001"
               containerClass="relative  "
               labelClassName="absolute -top-3 left-3 bg-white  px-1 text-sm font-medium text-gray-600 "
@@ -53,6 +65,8 @@ export default function AuthLayout() {
               label="Conta"
               name="conta"
               type="text"
+              pattern="[0-6-]*"
+              inputMode="numeric"
               placeholder="12345-6"
               containerClass="relative"
               labelClassName="absolute -top-3 left-3 bg-white 0 px-1 text-sm font-medium text-gray-600 "
@@ -64,6 +78,8 @@ export default function AuthLayout() {
               name="password"
               label="Senha"
               type="password"
+              pattern="[0-9-]*"
+              inputMode="numeric"
               placeholder="********"
               containerClass="relative"
               labelClassName="absolute -top-3 left-3 bg-white px-1 text-sm font-medium text-gray-800 "
