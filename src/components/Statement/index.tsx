@@ -100,7 +100,7 @@ export const Statement = () => {
         </button>
       </div>
 
-      {/* Aqui passa as transações já filtradas */}
+    
       <Activites title="" transactions={filteredTransactions} limit={8} />
     </div>
   );
