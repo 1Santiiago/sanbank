@@ -4,6 +4,8 @@ import HomeScreen from "./components/HomeScreen";
 import LayoutApp from "./components/Layout";
 import { PrivateRoute } from "./components/privateRout";
 import { PageCard } from "./components/CardPage";
+import { Statement } from "./components/Statement";
+import { Profile } from "./components/Profile";
 
 function App() {
   return (
@@ -25,6 +27,22 @@ function App() {
           element={
             <LayoutApp>
               <PageCard />
+            </LayoutApp>
+          }
+        />
+        <Route
+          path="/statement"
+          element={
+            <LayoutApp>
+              <Statement />
+            </LayoutApp>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <LayoutApp>
+              <Profile />
             </LayoutApp>
           }
         />
