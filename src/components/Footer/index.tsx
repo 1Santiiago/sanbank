@@ -26,14 +26,14 @@ const Footer = () => {
     {
       name: "Extrato",
       icon: <ReceiptIcon className="text-2xl" />,
-      active: false,
-      path: "/",
+      active: pathLocation === "/statement" ? true : false,
+      path: "/statement",
     },
     {
       name: "Perfil",
       icon: <UserCircleIcon className="text-2xl" />,
-      active: false,
-      path: "/",
+      active: pathLocation === "/profile" ? true : false,
+      path: "/profile",
     },
   ];
 

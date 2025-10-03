@@ -1,46 +1,33 @@
 import { ArrowDownIcon, ArrowUpIcon } from "lucide-react";
 
-export const Activites = () => {
-  const transactions = [
-    {
-      id: 1,
-      type: "in",
-      description: "Pix Recebido - Maria S.",
-      amount: "250,00",
-      date: "Hoje",
-    },
-    {
-      id: 2,
-      type: "out",
-      description: "Pagamento Boleto - Energia",
-      amount: "180,50",
-      date: "Hoje",
-    },
-    {
-      id: 3,
-      type: "out",
-      description: "Compra Débito - Supermercado",
-      amount: "345,78",
-      date: "Ontem",
-    },
-    {
-      id: 4,
-      type: "in",
-      description: "Salário",
-      amount: "4.500,00",
-      date: "2 dias atrás",
-    },
-  ];
+interface Transaction {
+  id: number;
+  type: any;
+  description: string;
+  amount: string;
+  date: string;
+}
 
+interface ActivitesProps {
+  title?: string;
+  transactions: Transaction[];
+  limit?: number;
+}
+
+export const Activites = ({
+  title = "Atividades recentes",
+  transactions,
+  limit = 3,
+}: ActivitesProps) => {
   return (
     <div>
-      <h1 className="text-lg font-bold mb-3">Atividades recentes</h1>
+      <h1 className="text-lg font-bold mb-3">{title}</h1>
       <div className="bg-white rounded-2xl shadow-md space-y-1">
-        {transactions.slice(0, 3).map((t, index) => (
+        {transactions.slice(0, limit).map((t, index) => (
           <div
             key={t.id}
             className={`flex items-center justify-between p-3 ${
-              index < 2 ? "border-b border-gray-100" : ""
+              index < limit - 1 ? "border-b border-gray-100" : ""
             }`}
           >
             <div className="flex items-center space-x-3">

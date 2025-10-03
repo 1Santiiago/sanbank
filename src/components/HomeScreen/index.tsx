@@ -11,7 +11,7 @@ function HomeScreen() {
       <FastChange />
       <MyCard />
       <Suggestion />
-      <Activites />
+      <Activites transactions={[]} />
     </main>
   );
 }
